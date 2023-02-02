@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.demo4.mapper.FriendMapper">
+
+    <resultMap id="BaseResultMap" type="com.li.demo4.entity.Friend">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="userNick" column="user_nick" jdbcType="VARCHAR"/>
+            <result property="head" column="head" jdbcType="VARCHAR"/>
+            <result property="heartNum" column="heart_num" jdbcType="BIGINT"/>
+            <result property="commentNum" column="comment_num" jdbcType="BIGINT"/>
+            <result property="collectNum" column="collect_num" jdbcType="BIGINT"/>
+            <result property="forwardNum" column="forward_num" jdbcType="BIGINT"/>
+            <result property="publishDate" column="publish_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,content,url,
+        user_nick,head,heart_num,
+        comment_num,collect_num,forward_num,
+        publish_date
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from friend
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+    <select id="queryList" resultType="com.li.demo4.entity.Friend">
+        select
+        <include refid="Base_Column_List"/>
+        from friend;
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from friend
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.li.demo4.entity.Friend" useGeneratedKeys="true">
+        insert into friend
+        ( id,content,url
+        ,user_nick,head,heart_num
+        ,comment_num,collect_num,forward_num
+        ,publish_date)
+        values (#{id,jdbcType=BIGINT},#{content,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR}
+        ,#{userNick,jdbcType=VARCHAR},#{head,jdbcType=VARCHAR},#{heartNum,jdbcType=BIGINT}
+        ,#{commentNum,jdbcType=BIGINT},#{collectNum,jdbcType=BIGINT},#{forwardNum,jdbcType=BIGINT}
+        ,#{publishDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.li.demo4.entity.Friend" useGeneratedKeys="true">
+        insert into friend
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="content != null">content,</if>
+                <if test="url != null">url,</if>
+                <if test="userNick != null">user_nick,</if>
+                <if test="head != null">head,</if>
+                <if test="heartNum != null">heart_num,</if>
+                <if test="commentNum != null">comment_num,</if>
+                <if test="collectNum != null">collect_num,</if>
+                <if test="forwardNum != null">forward_num,</if>
+                <if test="publishDate != null">publish_date,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="content != null">#{content,jdbcType=VARCHAR},</if>
+                <if test="url != null">#{url,jdbcType=VARCHAR},</if>
+                <if test="userNick != null">#{userNick,jdbcType=VARCHAR},</if>
+                <if test="head != null">#{head,jdbcType=VARCHAR},</if>
+                <if test="heartNum != null">#{heartNum,jdbcType=BIGINT},</if>
+                <if test="commentNum != null">#{commentNum,jdbcType=BIGINT},</if>
+                <if test="collectNum != null">#{collectNum,jdbcType=BIGINT},</if>
+                <if test="forwardNum != null">#{forwardNum,jdbcType=BIGINT},</if>
+                <if test="publishDate != null">#{publishDate,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.li.demo4.entity.Friend">
+        update friend
+        <set>
+                <if test="content != null">
+                    content = #{content,jdbcType=VARCHAR},
+                </if>
+                <if test="url != null">
+                    url = #{url,jdbcType=VARCHAR},
+                </if>
+                <if test="userNick != null">
+                    user_nick = #{userNick,jdbcType=VARCHAR},
+                </if>
+                <if test="head != null">
+                    head = #{head,jdbcType=VARCHAR},
+                </if>
+                <if test="heartNum != null">
+                    heart_num = #{heartNum,jdbcType=BIGINT},
+                </if>
+                <if test="commentNum != null">
+                    comment_num = #{commentNum,jdbcType=BIGINT},
+                </if>
+                <if test="collectNum != null">
+                    collect_num = #{collectNum,jdbcType=BIGINT},
+                </if>
+                <if test="forwardNum != null">
+                    forward_num = #{forwardNum,jdbcType=BIGINT},
+                </if>
+                <if test="publishDate != null">
+                    publish_date = #{publishDate,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.li.demo4.entity.Friend">
+        update friend
+        set 
+            content =  #{content,jdbcType=VARCHAR},
+            url =  #{url,jdbcType=VARCHAR},
+            user_nick =  #{userNick,jdbcType=VARCHAR},
+            head =  #{head,jdbcType=VARCHAR},
+            heart_num =  #{heartNum,jdbcType=BIGINT},
+            comment_num =  #{commentNum,jdbcType=BIGINT},
+            collect_num =  #{collectNum,jdbcType=BIGINT},
+            forward_num =  #{forwardNum,jdbcType=BIGINT},
+            publish_date =  #{publishDate,jdbcType=TIMESTAMP}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>

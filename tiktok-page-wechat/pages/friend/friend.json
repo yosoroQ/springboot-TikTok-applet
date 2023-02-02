@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "friend-navigation-bar": "/components/friend-navigation-bar/friend-navigation-bar",
+    "mp-video-swiper": "../../components/video-swiper/index"
+  }
 }

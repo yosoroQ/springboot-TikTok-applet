@@ -7,7 +7,7 @@ import java.util.List;
 /**
 * @author one
 * @description 针对表【video】的数据库操作Mapper
-* @createDate 2022-08-16 22:57:27
+* @createDate 2022-11-23 23:01:25
 * @Entity com.li.demo4.entity.Video
 */
 public interface VideoMapper {

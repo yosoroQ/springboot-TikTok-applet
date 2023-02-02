@@ -1,66 +1,31 @@
-// pages/friend/friend.js
-Page({
+ //获取应用实例
+ const app = getApp()
+ Page({
+   data: {
+     videoList: [
+     ]
+   },
+   onLoad() {
+     //拉数据
+     wx.request({
+       url: 'http://localhost:8888/friend',
+       success:(res)=>{
+         this.setData({ videoList:res.data });
+       }
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+     })
 
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+   },
+   dianzhan(e) {
+     console.log("点赞");
+   },
+   pinglun(e) {
+     console.log("评论")
+   },
+   shoucang(e) {
+     console.log("收藏")
+   },
+   zhuanfa(e) {
+     console.log("转发")
+   }
+ })

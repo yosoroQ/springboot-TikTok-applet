@@ -8,7 +8,7 @@
    onLoad() {
      //拉数据
      wx.request({
-       url: 'http://192.168.142.194:8888/test2',
+       url: 'http://localhost:8888/video',
        success:(res)=>{
          this.setData({ videoList:res.data });
        }

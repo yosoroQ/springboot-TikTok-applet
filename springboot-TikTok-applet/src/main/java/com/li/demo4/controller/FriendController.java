@@ -1,7 +1,7 @@
 package com.li.demo4.controller;
 
-import com.li.demo4.entity.Video;
-import com.li.demo4.mapper.VideoMapper;
+import com.li.demo4.entity.Friend;
+import com.li.demo4.mapper.FriendMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,24 +9,24 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-public class VideoController {
+public class FriendController {
 
     @Resource
-    private VideoMapper videoMapper;
+    private FriendMapper friendMapper;
 
     //处理多个请求
-    @RequestMapping("/test")
+    @RequestMapping("/testtest")
     public String hello(){
 
         return "测试";
     }
 
     //处理多个请求
-    @RequestMapping("/video")
-    public List<Video> videoList(){
-        List<Video> videos = videoMapper.queryList();
+    @RequestMapping("/friend")
+    public List<Friend> friendList(){
+        List<Friend> friend = friendMapper.queryList();
 
-        return videos ;
+        return friend ;
     }
 
 }
